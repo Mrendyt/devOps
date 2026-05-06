@@ -1,4 +1,5 @@
-name : Exercise 2 - Variable Management
+name: Exercise 2 - Variable Management
+
 on:
   workflow_dispatch:
   push:
@@ -7,19 +8,17 @@ jobs:
   variable-practice:
     runs-on: ubuntu-latest
     steps:
-      - name: "Step1 Set the variable"
-       shell: pwsh
-       run: |
-         # Logic from exercise 1
-         $server= "myserver.database.windows.net,1443" -replace'[,:]\d+$',''
+      - name: "Step1: Set the variable"
+        shell: pwsh
+        run: |
+          # 1. Clean the server string
+          $server = "myserver.database.windows.net,1443" -replace '[,:]\d+$',''
+          
+          # 2. Save the variable to the github environment
+          echo "clean_server=$server" >> $GITHUB_ENV
+          Write-Output "Server name saved to environment"
          
-         # 2. save the variableto the github environment
-         echo "clean_server=$server" >> $GITHUB_ENV
-         Write-Output "Server name saved to environment"
-         
-      -name: "step2 read the variable"
-       shell: pwsh
-       run: |
-         Write-Output"The value is : $env:clean_server"
-         
-         
+      - name: "step2 read the variable"
+        shell: pwsh
+        run: |
+          Write-Output "The value is : $env:clean_server"
