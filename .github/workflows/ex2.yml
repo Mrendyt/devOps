@@ -7,7 +7,7 @@ jobs:
   variable-practice:
     runs-on: ubuntu-latest
     steps:
-      -name: "Step1: Set the variable"
+      - name: "Step1: Set the variable"
        shell: pwsh
        run: |
          # Logic from exercise 1
