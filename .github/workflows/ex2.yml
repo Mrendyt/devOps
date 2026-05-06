@@ -2,6 +2,7 @@ name : Exercise 2 - Variable Management concurrency:
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   variable-practice:
