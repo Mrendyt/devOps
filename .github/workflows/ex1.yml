@@ -1,12 +1,15 @@
+name: Exercise 1 - Powershell Basics
+
+on:
+  workflow_dispatch:
+
 jobs:
   powershell-basics:
     runs-on: ubuntu-latest
     steps:
-      - name: "My first PowerShell task"
+      - name: "My first Powershell task"
         shell: pwsh
         run: |
           Write-Output "Pipeline started"
           $server = "myserver.database.windows.net,1443" -replace '[,:]\d+$',''
-          Write-Output "Clean server name: $server"
-          
-          
+          Write-Output "server name: $server"
