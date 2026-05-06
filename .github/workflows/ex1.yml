@@ -1,0 +1,12 @@
+jobs:
+  powershell-basics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "My first PowerShell task"
+        shell: pwsh
+        run: |
+          Write-Output "Pipeline started"
+          $server = "myserver.database.windows.net,1443" -replace '[,:]\d+$',''
+          Write-Output "Clean server name: $server"
+          
+          
