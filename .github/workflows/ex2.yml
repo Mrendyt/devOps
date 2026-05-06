@@ -1,5 +1,4 @@
-name : Exercise 2 - Variable Management concurrency: 
-
+name : Exercise 2 - Variable Management
 on:
   workflow_dispatch:
   push:
