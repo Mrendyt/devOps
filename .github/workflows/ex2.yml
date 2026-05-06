@@ -7,7 +7,7 @@ on:
 jobs:
   variable-practice:
     runs-on: ubuntu-latest
-    steps:
+    steps: # Line 9: This must be indented exactly 4 spaces
       - name: "Step1: Set the variable"
         shell: pwsh
         run: |
