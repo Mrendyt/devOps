@@ -15,7 +15,7 @@ jobs:
           $server = "myserver.database.windows.net,1443" -replace '[,:]\d+$',''
           
           # 2. Save the variable to the github environment
-          echo "clean_server=$server" >> $GITHUB_ENV
+          Add-Content -Path $GITHUB_ENV -Value "clean_server=$server"
           Write-Output "Server name saved to environment"
          
       - name: "step2 read the variable"
