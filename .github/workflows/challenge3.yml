@@ -27,4 +27,11 @@ jobs:
         if: needs.check_resource.outputs.skip == 'false'
         steps:
             - name: create mock resource
-              run: echo "This is a mock resource" > resource-exists.txt            
+              run: | 
+                  echo "This is a mock resource" > resource-exists.txt   
+                  
+                  if [ -f resource-exists.txt ]; then
+                      echo "file found"
+                  else
+                      echo "file not found" 
+                  fi
