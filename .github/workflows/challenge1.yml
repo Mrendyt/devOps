@@ -10,7 +10,6 @@ jobs:
   basics:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
       - name: Print basics
         run: |
           echo "Workflow started"
