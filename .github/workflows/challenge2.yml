@@ -14,7 +14,7 @@ jobs:
         shell: bash
         run: |
           echo "hello" > sample.txt
-          if [-f sample.txt ]; then
+          if [ -f sample.txt ]; then
             echo "file exists"
           else
             echo "file missing"
