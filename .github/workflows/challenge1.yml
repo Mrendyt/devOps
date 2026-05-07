@@ -1,5 +1,9 @@
 name: Challenge 1 - Basic
 
+env:
+  # This forces the runner to use Node 24 for your actions
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   workflow_dispatch:
 jobs:
