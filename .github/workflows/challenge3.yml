@@ -1,0 +1,25 @@
+name : Challenge 3 - Check var set exists
+
+on:
+    workflow_dispatch:
+
+jobs:
+    check_resource:
+        runs-on: ubuntu-latest
+        steps:
+            - name: check mock resource
+              id: check
+              shell: bash
+              run: |
+                if [ -f resource-exists.txt ]; then
+                    echo "skip=true" >> "$GITHUB_OUTPUT"
+                else
+                    echo "skip=false" >> "$GITHUB_OUTPUT"
+                fi
+    create_resource:
+        runs-on: ubuntu-latest
+        needs: check_resource
+        if: needs.check_resource.outputs.skip == 'false'
+        steps:
+            - name: create mock resource
+              run: echo "This is a mock resource" > resource-exists.txt            
