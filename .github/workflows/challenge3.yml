@@ -6,6 +6,8 @@ on:
 jobs:
     check_resource:
         runs-on: ubuntu-latest
+        outputs:
+            skip: ${{ steps.check.outputs.skip }}
         steps:
             - name: check mock resource
               id: check
