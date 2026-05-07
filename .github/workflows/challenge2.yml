@@ -1,0 +1,30 @@
+name: Challenge2 - Bash-Pwsh
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  bash_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bash file check
+        shell: bash
+        run: |
+          echo "hello" > sample.txt
+          if [-f sample.txt ]; then
+            echo "file exists"
+          else
+            echo "file missing"
+          fi
+
+  powershell_job:
+    runs-on: windows-latest
+    steps:
+      - name: clean server name continue-on-error
+        shell: pwsh
+        run: |
+          $server = "myserver.database.windows.net,1433" -replace '[,:]\d+$', ''
+          Write-Output "server = $server"
