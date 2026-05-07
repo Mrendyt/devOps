@@ -1,4 +1,6 @@
 name : Challenge 3 - Check var set exists
+env:
+    FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 on:
     workflow_dispatch:
