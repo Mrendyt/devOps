@@ -1,0 +1,22 @@
+name: Reusable Action
+
+on: 
+  workflow_call:
+    inputs:
+      pipeline_name:
+        required: true
+        type: string
+      payload_b64:
+        required: true
+        type: string
+
+jobs:
+  run_task:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show parameters
+        run: |
+          echo "pipeline = ${{ inputs.pipeline_name }}"
+          echo "${{ inputs.payload_b64 }}" | base64 -d
+          
+      
