@@ -1,1 +1,14 @@
+name: call pipeline
 
+on: 
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  call-my-action:
+    uses: ./.github/workflows/challenge5.yml
+    with:
+      pipeline_name: " My challenge 5 pipeline"
+      payload_b64: "SGVsbG8gV29ybGQ="
