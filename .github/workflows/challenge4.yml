@@ -1,0 +1,31 @@
+name: challenge 4
+
+on: 
+  workflow_dispatch: 
+
+jobs:
+  make_payloads:
+    runs-on: ubuntu-latest
+    outputs:
+      share: ${{ steps.payloads.outputs.share }} 
+      create_varset: ${{ steps.payloads.outputs.create_varset }} 
+      unshare: ${{ steps.payloads.outputs.unshare }}
+      
+    steps:
+      - name: Build payloads
+        id: payloads
+        shell: bash
+        run: |
+          share=$(echo -n '{"new_project":"Terraform","template_project":"Demo","svc_conn_name":"sp-demo"}' | base64 -w 0) create_varset=$(echo -n '{"spn":"sp-demo","project":"Demo"}' | base64 -w 0) unshare=$(echo -n '{"project":"Terraform","svc_conn_name":"sp-demo"}' | base64 -w 0) echo "share=$share" >> "$GITHUB_OUTPUT" echo "create_varset=$create_varset" >> "$GITHUB_OUTPUT" echo "unshare=$unshare" >> "$GITHUB_OUTPUT"
+
+  use_payloads:
+    runs-on: ubuntu-latest
+    needs: make_payloads
+    steps:
+      - name: Decode payloads
+        shell: bash
+        run: |
+          echo "${{ needs.make_payloads.outputs.share }}" | base64 -d echo echo "${{ needs.make_payloads.outputs.create_varset }}" | base64 -d echo echo "${{ needs.make_payloads.outputs.unshare }}" | base64 -d
+
+        
+          
